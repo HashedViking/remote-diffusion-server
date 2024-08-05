@@ -1,0 +1,96 @@
+#folderStructure {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+#folderStructure>li {
+    list-style-type: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#folderStructure>li:hover {
+    background-color: #e0e0e0;
+}
+
+#folderStructure>li>a {
+    position: absolute;
+    /* Make the link cover the whole box */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: block;
+    font-size: 0;
+    text-decoration: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+#folderStructure>li>a:hover {
+    text-decoration: none;
+    /* Remove underline on hover */
+}
+
+#folderStructure>li>span {
+    order: 2;
+    /* Make the text appear second */
+    text-overflow: ellipsis;
+    /* Add ellipsis for long text */
+    overflow: hidden;
+    /* Hide the overflow */
+    white-space: nowrap;
+    /* Prevent the text from wrapping */
+    width: 100%;
+    /* Ensure the span takes the full width of the li */
+}
+
+#folderStructure>li.directory:before,
+#folderStructure>li.file:before {
+    content: '📁 ';
+    font-size: 60px;
+    display: block;
+    order: 1;
+}
+#folderStructure>li.file:before {
+    content: '📄 ';
+}
+#folderStructure>li.file.py:before {
+    content: '🐍 ';
+}
+#folderStructure>li.file.jpg:before,
+#folderStructure>li.file.png:before {
+    content: '🖼️ ';
+}
+#folderStructure>li.file.bat:before,
+#folderStructure>li.file.sh:before {
+    content: '🖥️ ';
+}
+#folderStructure>li.file.js:before {
+    content: '📜 ';
+}
+
+#file-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: #333;
+}

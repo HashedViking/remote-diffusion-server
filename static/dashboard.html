@@ -1,0 +1,33 @@
+{{define "dashboard"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://remotediffusion.com/static/css/dashboard-style.css" />
+    <link rel="stylesheet" href="https://remotediffusion.com/static/css/filemanager-style.css" />
+</head>
+
+<body>
+    {{ template "status" . }}
+    <hr>
+    {{ if and .ServerActive .ClientActive }}
+    <script>
+        if (window.location.hostname === 'remotediffusion.com') {
+            window.location.href = 'https://{{.UserKey}}.remotediffusion.com/dashboard';
+        }
+    </script>
+    {{ template "filemanager" . }}
+    {{ else }}
+    <script>
+        if (window.location.hostname !== 'remotediffusion.com') {
+            window.location.href = 'https://remotediffusion.com/rdapi/dashboard/{{.UserKey}}';
+        }
+    </script>
+    <h1>Server and Client must be active to access the file manager</h1>
+    {{ end }}
+
+</body>
+
+</html>
+{{end}}

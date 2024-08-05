@@ -1,0 +1,180 @@
+{{define "filemanager"}}
+<div>
+    <h1 id="path-title">Files</h1>
+    <ul id="folderStructure">
+        <!-- Folder structure will be populated here -->
+    </ul>
+
+    <h2>Add Download Job</h2>
+    <form id="addDownloadJobForm" action="/rdapi/add-download-job" method="post">
+        <input type="hidden" id="userKey" name="userKey" value="{{.UserKey}}">
+        <label for="url">URL:</label><br>
+        <input type="text" id="url" name="url"><br>
+        <label for="fileName">File Name:</label><br>
+        <input type="text" id="fileName" name="fileName"><br>
+        <input type="submit" value="Download Here">
+    </form>
+
+    <script>
+        var currentPath = loadCurrentPath();
+
+        // Get folder structure
+        var xhr = new XMLHttpRequest();
+        var username = sessionStorage.getItem('username');
+        var password = sessionStorage.getItem('password');
+
+        if (!username || !password) {
+            username = prompt('Please enter your username');
+            password = prompt('Please enter your password');
+            sessionStorage.setItem('username', username);
+            sessionStorage.setItem('password', password);
+        }
+        var headers = 'Basic ' + btoa(username + ":" + password);
+
+        // Initial load
+        loadFolderStructure(currentPath, false);
+
+        window.onload = function () {
+            var path = loadCurrentPath();
+            loadFolderStructure(path, false);
+        };
+
+        window.onpopstate = function (event) {
+            if (event.state) {
+                currentPath = event.state.path;
+                loadFolderStructure(currentPath, false);
+            }
+        };
+
+        function loadCurrentPath() {
+            return sessionStorage.getItem('currentPath') ? sessionStorage.getItem('currentPath') : '/files/';
+        }
+
+        function loadFolderStructure(path, pushState = true) {
+            var xhr = new XMLHttpRequest();
+            var noCacheUrl = 'https://{{.UserKey}}.remotediffusion.com' + path + '?_=' + new Date().getTime();
+            xhr.open('GET', noCacheUrl, true);
+            xhr.setRequestHeader('Authorization', headers);
+            xhr.onload = function () {
+                var parser = new DOMParser();
+                var htmlDoc = parser.parseFromString(xhr.responseText, 'text/html');
+                var links = htmlDoc.querySelectorAll('pre a');
+                var folderStructure = document.getElementById('folderStructure');
+                folderStructure.innerHTML = '';
+                links.forEach(function (link) {
+                    var li = document.createElement('li');
+                    var a = document.createElement('a');
+                    var span = document.createElement('span');
+
+                    span.textContent = link.textContent;
+                    a.href = path + link.textContent;
+
+                    a.onclick = function (event) {
+                        var path = new URL(this.href).pathname;
+                        if (path.endsWith('/')) {
+                            event.preventDefault();
+                            currentPath = path;
+                            sessionStorage.setItem('currentPath', currentPath);
+                            loadFolderStructure(currentPath);
+                        } else {
+                            // It's a file, let the browser handle the click
+                        }
+                    };
+
+                    li.appendChild(a);
+                    li.appendChild(span);
+
+                    // Determine the file type based on the extension
+                    var fileType = link.textContent.endsWith('/') ? 'directory' : 'file';
+                    if (fileType === 'file') {
+                        var extension = link.textContent.split('.').pop();
+                        fileType += ' ' + extension;
+                    }
+                    li.className = fileType;
+
+                    folderStructure.appendChild(li);
+                });
+
+                if (folderStructure.innerHTML === '') {
+                    folderStructure.innerHTML = '<li>No files or folders in this directory.</li>';
+                }
+            };
+            xhr.send();
+
+            createClickablePath(path);
+
+            var newUrl = '/dashboard' + path;
+            if (pushState) {
+                history.pushState({ path: path }, "", newUrl);
+            } else {
+                history.replaceState({ path: path }, "", newUrl);
+            }
+
+            sessionStorage.setItem('currentPath', path);
+        }
+
+        function createClickablePath(url) {
+            var pathComponents = url.split('/');
+            var pathTitle = document.getElementById('path-title');
+            pathTitle.textContent = '';
+            var path = '/';
+
+            pathComponents.forEach(function (component, index) {
+                if (component === '') {
+                    return;
+                }
+
+                path += component + '/';
+                var a = document.createElement('a');
+                a.textContent = component;
+                a.href = path;
+
+                a.onclick = function (event) {
+                    event.preventDefault();
+                    var path = new URL(this.href).pathname;
+                    console.log('Clicked on ' + this.href);
+                    loadFolderStructure(path, true);
+                };
+                pathTitle.appendChild(a);
+
+                if (index < pathComponents.length - 1) {
+                    pathTitle.appendChild(document.createTextNode(' / '));
+                }
+            });
+        }
+
+        document.getElementById('addDownloadJobForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            addDownloadJob();
+        });
+
+        async function addDownloadJob() {
+            const userKey = document.getElementById('userKey').value;
+            const url = document.getElementById('url').value;
+            const fileName = document.getElementById('fileName').value;
+            const filePath = currentPath.replace('/files/', '');
+
+            try {
+                const response = await fetch('/rdapi/add-download-job?_=' + new Date().getTime(), {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + userKey
+                    },
+                    body: JSON.stringify({
+                        url: url,
+                        fileName: fileName,
+                        filePath: filePath
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.error('There has been a problem with addDownloadJob:', error);
+            }
+        }
+    </script>
+</div>
+{{end}}

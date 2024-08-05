@@ -1,0 +1,628 @@
+/* * {
+    outline: 1px solid red;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
+body {
+    background-color: #202020;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.main-container {
+    max-width: 1600px;
+    min-width: 960px;
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto; 
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+.purple-bubble {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('../images/purple_bubble.png') no-repeat fixed;
+    background-position: top right;
+    background-size: 600px;
+}
+.green-bubble {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('../images/green_bubble.png') no-repeat fixed;
+    background-position: calc(50% - 200px) top;
+    background-size: 600px;
+}
+/* header + hero */
+.hero-container {
+    width: 100%;
+    box-sizing: border-box;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+}
+
+.logo-text {
+    color: #ECECEB;
+    font-size: 16px;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+.menu {
+    display: flex;
+}
+
+.menu-item {
+    border-radius: 20px;
+    background: var(--Green, #CDFE70);
+    padding: 0; /* Remove padding here */
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-item:first-child {
+    margin-left: 0;
+}
+
+.menu-item a {
+    color: var(--Black, #202020);
+    text-decoration: none;
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    display: block;
+    padding: 8px 20px;
+    width: 100%;
+    height: 100%; 
+    box-sizing: border-box;
+}
+
+.press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 125px;
+    width: 100%;
+    max-width: 1600px;
+}
+
+.hero-text {
+    width: 600px; 
+    height: auto;
+    color: #ECECEB;
+    font: 400 28px/130% 'Press Start 2P', cursive;
+    word-wrap: break-word;
+    margin-right: 40px; 
+}
+
+.hero-image {
+    width: 600px; 
+    max-height: 150%; 
+    margin-left: 0;
+}
+
+.hero-secondary-text {
+    width: 600px; 
+    color: #ECECEB;
+    font: 400 18px/150% 'Roboto Mono', monospace;
+    word-wrap: break-word;
+    margin: 28px 40px 0 0;
+}
+
+.hero-form {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 50px;
+    width: 530px;
+    margin-top: 28px;
+}
+
+.hero-input {
+    width: 100%;
+    height: 100%;
+    font: 400 16px 'Roboto Mono', monospace;
+    text-align: left;
+    border-radius: 25px;
+    padding: 0 60px 0 20px;
+    background: var(--White, #ECECEB);
+    border: 3px solid var(--Purple, #C19BF3);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.hero-button {
+    position: absolute;
+    right: 0;
+    width: 30%;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    padding: 10px 20px; 
+    box-sizing: border-box;
+    border: none;
+    border-radius: 25px;
+    background-color: #C19BF3;
+    color: white;
+    cursor: pointer;
+    font: 400 16px 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+.hero-button:hover {
+    background-color: #75579d; 
+}
+
+.download-button {
+    display: inline-flex;
+    padding: 0;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: var(--Green, #CDFE70);
+    border: none;
+    cursor: pointer;
+    font: 400 16px 'Roboto Mono', monospace;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
+}
+
+.download-button img {
+    height: 24px;
+    width: 24px;
+}
+
+.download-buttons-container :hover {
+    background: #6db644;
+}
+
+.download-buttons-container {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    width: 530px;
+    box-sizing: border-box;
+}
+
+.download-link {
+    color: #C19BF3;
+    /* text-decoration: none; */
+}
+
+.download-link:hover {
+    color: #75579d;
+}
+
+.how-to-start {
+    margin-top: 120px;
+}
+
+.how-to-start-title {
+    color: var(--White, #ECECEB);
+    font: 400 28px/120% "Press Start 2P";
+    margin-bottom: 28px;
+}
+
+.container-grid {
+    display: grid;
+    width: 100%;
+    grid-template: repeat(2, 280px) / repeat(3, 32%);
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.grid-item {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    border-radius: 20px;
+    background: var(--Green, #CDFE70);
+    position: relative; 
+}
+
+.grid-number {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--Black, #202020);
+    font: 400 70px/120% "Press Start 2P", sans-serif;
+}
+
+.grid-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 145px;
+    height: 140px;
+    overflow: hidden;
+}
+
+.grid-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: var(--Black, #202020);
+    font: 400 20px/130% "Roboto Mono", monospace;
+    /* overflow: hidden; */
+}
+
+.why-us-container {
+    width: 1520px;
+    height: 411px;
+    flex: 0 0 auto;
+    position: relative;
+    margin: 120px 0;
+}
+
+.green-vector-image {
+    position: absolute;
+    z-index: 0;
+    bottom: 40px; 
+    width: 100%;
+    height: 288.92px;
+    flex: 0 0 auto;
+    stroke-width: 15px;
+    stroke: var(--green-line, #CAED89);
+}
+
+.why-us-background-image {
+    /* position: absolute; */
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+}
+
+.why-us-title {
+    position: relative;
+    display: inline-block;
+    color: var(--Black, #202020);
+    font: 400 28px/120% "Press Start 2P";
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.why-us-columns {
+    display: grid;
+    position: relative; 
+    z-index: 1;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 120px 0;
+    gap: 30px;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+}
+
+.paragraph-why-us, .big-paragraph {
+    color: var(--Black, #202020);
+    font-family: "Roboto Mono", monospace;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.big-paragraph {
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.footer-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+.footer-line, .footer-line-2, .footer-line-3 {
+    width: 100%;
+    height: 1px;
+    flex-shrink: 0;
+    background-color: var(--Dark-Gray, #3F3F3F);
+    position: relative;
+}
+
+.footer-line-3 {
+    bottom: 0px;
+}
+
+.newsletter-title {
+    margin-top: 40px;
+    color: var(--White, #ECECEB);
+    font: 28px "Press Start 2P";
+    line-height: 28px;
+}
+
+.newsletter-text {
+    margin-top: 18px;
+    color: var(--Gray, #969595);
+    font: 16px "Roboto Mono", monospace;
+    line-height: 16px;
+}
+
+.email-input {
+    width: 455px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid var(--White, #ECECEB);
+    color: var(--Gray, #969595);
+    font: 16px "Roboto Mono", monospace;
+    font-weight: 400;
+    line-height: 16px;
+    padding: 16px;
+    background-color: transparent;
+}
+
+.custom-submit-button {
+    margin-left: 16px;
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    background-color: #C19BF3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 0;
+}
+
+.social-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 308px;
+    height: 100%;
+    padding: 40px 0 40px 100px;
+    border-left: 2px solid #3F3F3F;
+}
+
+.social-button-container a {
+    margin-bottom: 24px;
+    color: var(--White, #ECECEB);
+    font: 28px "Press Start 2P";
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+}
+
+.social-button-container a:hover {
+    text-decoration: underline;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 40px 0 0;
+}
+
+.input-button-container {
+    margin: 36px 0 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-links-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.get-in-touch-law-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between; 
+    flex-direction: row;
+    margin: 40px 0;
+}
+
+.get-in-touch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.get-in-touch-title {
+    color: var(--White, #ECECEB);
+    font: 28px/28px "Press Start 2P";
+}
+
+.email-link {
+    margin-top: 28px;
+    color: var(--White, #ECECEB);
+    font: 16px/19.2px "Roboto Mono", monospace;
+    font-weight: 400;
+    text-decoration-line: underline;
+}
+
+.law-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 40px;
+}
+
+.law-container a {
+    margin-bottom: 24px;
+    color: var(--Gray, #969595);
+    font: 12px/14.4px "Roboto Mono", monospace;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.copyright-text {
+    color: var(--Gray, #969595);
+    font: 14px/15.4px "Roboto Mono", monospace;
+    font-weight: 400;
+    line-height: 110%;
+}
+
+.copyright-design { 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 28px;
+}
+
+.website-credit,
+.credit-link {
+    color: var(--Gray, #969595);
+    font: 14px/16.8px "Roboto Mono", monospace;
+    font-weight: 400;
+}
+
+.preformatted-text {
+    white-space: pre-wrap;
+}
+
+.pricing-container {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.pricing-title {
+    color: var(--White, #ECECEB);
+    font: 400 28px/120% "Press Start 2P";
+    margin-bottom: 28px;
+}
+
+.pricing-cards {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 32%);
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.pricing-card {
+    position: relative; 
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    flex: 0 0 auto;
+    border-radius: 20px;
+    background: var(--Green, #CDFE70);
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    color: var(--Black, #202020);
+    font: 400 24px/120% "Press Start 2P";
+    margin-bottom: 20px;
+}
+
+.card-perks {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 28px;
+}
+
+.card-perks li {
+    margin-bottom: 10px;
+    color: var(--Black, #202020);
+    font: 400 20px/130% "Roboto Mono", monospace;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.card-perk-button {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: var(--Purple, #C19BF3);
+    border: none;
+    cursor: pointer;
+    font: 400 16px 'Roboto Mono', monospace;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 0;
+    width: 160px;
+}
+
+.card-perk-button a {
+    color: var(--Black, #202020);
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px; 
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; 
+}
+
+.price-number {
+    color: var(--Black, #202020);
+    font: 400 28px/120% 'Roboto Mono';
+    margin-bottom: 28px;
+}
