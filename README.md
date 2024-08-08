@@ -9,6 +9,7 @@
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 ![GitHub License](https://img.shields.io/github/license/HashedViking/remote-diffusion-server)
+![Linux](https://img.shields.io/badge/avaliable_on-Linux-blue)
 
 </div>
 
