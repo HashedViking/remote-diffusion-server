@@ -24,7 +24,6 @@
 
 - [📖 Table of Contents](#-table-of-contents)
 - [🧐 About ](#-about-)
-- [🏁 Getting Started ](#-getting-started-)
 - [🚀 Deployment ](#-deployment-)
 - [📝 TODO ](#-todo-)
 - [⛏️ Built Using ](#️-built-using-)
@@ -34,7 +33,7 @@
 
 Remote Diffusion backend server. This server manages multiple connections. If you need just a one-click tunnel to your local [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) check out the [Client](https://github.com/HashedViking/remote-diffusion-client).
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## 🚀 Deployment <a name = "deployment"></a>
 Tested on Ubuntu 22.04
 
 Update apt
@@ -74,8 +73,6 @@ Run
 ```
 ./remote-diffusion-server
 ```
-
-## 🚀 Deployment <a name = "deployment"></a>
 
 Setup Nginx reloading script
 ```
