@@ -10,6 +10,10 @@
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 ![GitHub License](https://img.shields.io/github/license/HashedViking/remote-diffusion-server)
 ![Linux](https://img.shields.io/badge/avaliable_on-Linux-blue)
+[![CC BY-NC-ND 4.0][cc-by-nc-nd-shield]][cc-by-nc-nd]
+
+[cc-by-nc-nd]: http://creativecommons.org/licenses/by-nc-nd/4.0/
+[cc-by-nc-nd-shield]: https://img.shields.io/badge/CC_License-CC%20BY--NC--ND%204.0-lightgrey.svg
 
 </div>
 
